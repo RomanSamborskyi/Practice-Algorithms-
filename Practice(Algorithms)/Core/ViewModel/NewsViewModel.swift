@@ -8,7 +8,7 @@
 import UIKit
 
 
-class ViewsViewModel: ObservableObject {
+class NewsViewModel: ObservableObject {
     
     @Published var news: [NewsModel] = []
     

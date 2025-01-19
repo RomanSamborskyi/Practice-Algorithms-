@@ -14,18 +14,18 @@ struct NewsResponse: Decodable {
 }
 
 struct NewsModel: Decodable {
-    let source: NewsSource
-    let author: String
-    let title: String
-    let description: String
-    let url: String
-    let urlToImage: String
-    let publishedAt: String
-    let content: String
+   var source: NewsSource
+   var author: String?
+   var title: String?
+   var description: String?
+   var url: String?
+   var urlToImage: String?
+   var publishedAt: String?
+   var content: String?
 }
 
 struct NewsSource: Identifiable, Decodable {
-    let id: String
-    let name: String
+    var id: String?
+    var name: String?
 }
  
