@@ -1,5 +1,5 @@
 //
-//  Networking.swift
+//  NetworkErrors.swift
 //  Practice(Algorithms)
 //
 //  Created by Roman Samborskyi on 19.01.2025.
@@ -8,8 +8,7 @@
 import UIKit
 
 
-class Networking {
-    func fetchNews() async throws {
-        
-    }
+
+enum AppError: Error {
+    case badUrl, badResponse, invalidData
 }

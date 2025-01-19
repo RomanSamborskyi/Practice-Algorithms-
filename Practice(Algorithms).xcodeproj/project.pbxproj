@@ -15,6 +15,8 @@
 		6B0662402D3CEED30093D1F3 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B06623F2D3CEED30093D1F3 /* NewsModel.swift */; };
 		6B0662422D3CEF340093D1F3 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0662412D3CEF340093D1F3 /* Networking.swift */; };
 		6B0662452D3CEFF70093D1F3 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0662442D3CEFF70093D1F3 /* EndPoints.swift */; };
+		6B0662472D3D13B50093D1F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0662462D3D13B50093D1F3 /* Constants.swift */; };
+		6B0662492D3D14150093D1F3 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0662482D3D14150093D1F3 /* NetworkErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		6B06623F2D3CEED30093D1F3 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		6B0662412D3CEF340093D1F3 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		6B0662442D3CEFF70093D1F3 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		6B0662462D3D13B50093D1F3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6B0662482D3D14150093D1F3 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				6B0662442D3CEFF70093D1F3 /* EndPoints.swift */,
+				6B0662462D3D13B50093D1F3 /* Constants.swift */,
+				6B0662482D3D14150093D1F3 /* NetworkErrors.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -204,6 +210,8 @@
 				6B0662422D3CEF340093D1F3 /* Networking.swift in Sources */,
 				6B0662362D3CEDB70093D1F3 /* ContentView.swift in Sources */,
 				6B06623E2D3CEE880093D1F3 /* NewsViewModel.swift in Sources */,
+				6B0662472D3D13B50093D1F3 /* Constants.swift in Sources */,
+				6B0662492D3D14150093D1F3 /* NetworkErrors.swift in Sources */,
 				6B0662452D3CEFF70093D1F3 /* EndPoints.swift in Sources */,
 				6B0662372D3CEDB70093D1F3 /* Practice_Algorithms_App.swift in Sources */,
 			);
