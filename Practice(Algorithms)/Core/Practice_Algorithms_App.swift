@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Practice_Algorithms_App: App {
+    
+    let netWorking: Networking = Networking()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(netWorking: netWorking)
         }
     }
 }
