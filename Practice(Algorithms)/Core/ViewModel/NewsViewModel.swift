@@ -11,8 +11,9 @@ import UIKit
 class NewsViewModel: ObservableObject {
     
     @Published var news: [NewsModel] = []
-    private let netWorking: Networking
     @Published var totalResults: Int = 0
+    private let netWorking: Networking
+    private var currentPage: Int = 1
     
     init(netWorking: Networking) {
         self.netWorking = netWorking
@@ -23,18 +24,21 @@ class NewsViewModel: ObservableObject {
             do {
                 try await fetchNews()
             } catch let error as AppError {
-                print(error.localizedDescription)
+                print("Error here: \(error.description)")
             }
         }
     }
     
     func fetchNews() async throws {
         let session = URLSession.shared
-        let request = try netWorking.requestFactory(urlData: URLEndpoint.all("all"))
-        let data = try await netWorking.fetchNews(type: NewsResponse.self, urlSession: session, request: request)
-        await MainActor.run {
-            self.totalResults = data?.totalResults ?? 0
-            self.news = data?.articles ?? []
+        while news.count != totalResults - 1 {
+            let request = try netWorking.requestFactory(urlData: URLEndpoint.all("all", currentPage))
+            let data = try await netWorking.fetchNews(type: NewsResponse.self, urlSession: session, request: request)
+            await MainActor.run {
+                self.totalResults = data?.totalResults ?? 0
+                self.news.append(contentsOf: data?.articles ?? [])
+            }
+            currentPage += 1
         }
     }
 }

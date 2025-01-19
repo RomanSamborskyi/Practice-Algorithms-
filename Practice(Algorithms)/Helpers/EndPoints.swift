@@ -29,7 +29,7 @@ enum BaseUrl {
 }
 
 enum URLEndpoint: NetworkingUrlProtocol {
-    case all(String)
+    case all(String, Int)
     
     var method: HTTPMethods {
         return HTTPMethods.get
@@ -37,8 +37,8 @@ enum URLEndpoint: NetworkingUrlProtocol {
     
     var url: String {
         switch self {
-        case .all(let all):
-            return "\(BaseUrl.baseURL.url)q=\(all)&apiKey=\(Constants.apiKey)"
+        case .all(let all, let page):
+            return "\(BaseUrl.baseURL.url)q=\(all)&page=\(page)&apiKey=\(Constants.apiKey)"
         }
     }
 }

@@ -10,5 +10,16 @@ import UIKit
 
 
 enum AppError: Error {
-    case badUrl, badResponse, invalidData
+    case badUrl, badResponse(Int), invalidData
+    
+    var description: String {
+        switch self {
+        case .badUrl:
+            "Bad url"
+        case .badResponse(let response):
+            "Bad response: \(response)"
+        case .invalidData:
+            "Invalid data"
+        }
+    }
 }

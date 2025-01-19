@@ -35,7 +35,9 @@ class Networking {
         guard let data = data,
               let respone = response as? HTTPURLResponse,
               respone.statusCode >= 200 && respone.statusCode < 300 else {
-            throw AppError.badResponse
+            let response = response as? HTTPURLResponse
+            print(response)
+            throw AppError.badResponse(response?.statusCode ?? 0)
         }
         return data
     }

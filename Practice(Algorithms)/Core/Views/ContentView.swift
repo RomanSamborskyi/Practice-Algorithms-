@@ -17,10 +17,12 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(viewModel.news, id: \.author) { news in
-                    NewsRowView(news: news)
-                }
+            VStack {
+                Text("Result of searching should be here")
+                    .padding()
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -32,7 +34,10 @@ struct ContentView: View {
 
                 }
                 ToolbarItem(placement: .topBarLeading) {
-                    Text("\(viewModel.totalResults)")
+                    VStack {
+                        Text("\(viewModel.totalResults)")
+                        Text("\(viewModel.news.count)")
+                    }
                 }
             }
         }
