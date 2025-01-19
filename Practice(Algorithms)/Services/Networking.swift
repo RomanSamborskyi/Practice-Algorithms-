@@ -21,7 +21,6 @@ class Networking {
         
         return request
     }
-    
     func fetchNews<T: Decodable>(type: T.Type, urlSession: URLSession, request: URLRequest) async throws -> T? {
         
         let (data, response) = try await urlSession.data(for: request)
@@ -36,7 +35,6 @@ class Networking {
               let respone = response as? HTTPURLResponse,
               respone.statusCode >= 200 && respone.statusCode < 300 else {
             let response = response as? HTTPURLResponse
-            print(response)
             throw AppError.badResponse(response?.statusCode ?? 0)
         }
         return data
