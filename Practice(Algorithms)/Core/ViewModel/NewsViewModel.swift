@@ -13,10 +13,12 @@ class NewsViewModel: ObservableObject {
     @Published var news: [NewsModel] = []
     @Published var totalResults: Int = 0
     private let netWorking: Networking
+    private let coreData: CoreDataManager
     private var currentPage: Int = 1
     
-    init(netWorking: Networking) {
+    init(netWorking: Networking, coreData: CoreDataManager) {
         self.netWorking = netWorking
+        self.coreData = coreData
     }
     
     func getNews() {

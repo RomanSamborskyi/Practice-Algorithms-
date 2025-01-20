@@ -11,10 +11,11 @@ import SwiftUI
 struct Practice_Algorithms_App: App {
     
     let netWorking: Networking = Networking()
+    let coreData: CoreDataManager = CoreDataManager()
     
     var body: some Scene {
         WindowGroup {
-            ContentView(netWorking: netWorking)
+            ContentView(netWorking: netWorking, coreData: coreData)
         }
     }
 }

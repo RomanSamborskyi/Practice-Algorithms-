@@ -11,8 +11,8 @@ struct ContentView: View {
     
     @StateObject private var viewModel: NewsViewModel
     
-    init(netWorking: Networking) {
-        _viewModel = StateObject(wrappedValue: NewsViewModel(netWorking: netWorking))
+    init(netWorking: Networking, coreData: CoreDataManager) {
+        _viewModel = StateObject(wrappedValue: NewsViewModel(netWorking: netWorking, coreData: coreData))
     }
     
     var body: some View {
