@@ -11,8 +11,9 @@ import CoreData
 
 class CoreDataManager {
     
-    private let containerName: String = "News"
-    private let newsEntityName: String = "NewsEntity"
+    private(set) var containerName: String = "News"
+    private(set) var newsEntityName: String = "NewsEntity"
+    private(set) var NewsSourceEntity: String = "NewsSourceEntity"
     let container: NSPersistentContainer
     let context: NSManagedObjectContext
     
