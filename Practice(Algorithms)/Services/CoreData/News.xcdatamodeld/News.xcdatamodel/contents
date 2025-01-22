@@ -8,9 +8,11 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>
         <attribute name="urlToImage" optional="YES" attributeType="String"/>
+        <relationship name="newsSource" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NewsSourceEntity" inverseName="news" inverseEntity="NewsSourceEntity"/>
     </entity>
     <entity name="NewsSourceEntity" representedClassName="NewsSourceEntity" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="news" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NewsEntity" inverseName="newsSource" inverseEntity="NewsEntity"/>
     </entity>
 </model>

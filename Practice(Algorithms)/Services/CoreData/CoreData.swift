@@ -29,6 +29,23 @@ class CoreDataManager {
         }
     }
     
+    func addToCoreData(_ news: NewsModel) {
+        let newItem = NewsEntity(context: context)
+        newItem.descript = news.description
+        newItem.author = news.author
+        newItem.content = news.content
+        newItem.publishedAt = news.publishedAt
+        newItem.title = news.title
+        newItem.url = news.url
+        newItem.urlToImage = news.urlToImage
+        newItem.newsSource?.id = news.source.id
+        newItem.newsSource?.name = news.source.name
+        
+        save()
+    }
+    
+    
+    
     func save() {
         do {
             try context.save()
