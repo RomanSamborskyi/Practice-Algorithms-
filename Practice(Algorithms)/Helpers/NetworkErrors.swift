@@ -10,7 +10,7 @@ import UIKit
 
 
 enum AppError: Error {
-    case badUrl, badResponse(Int), invalidData
+    case badUrl, badResponse(Int), invalidData, coreDataFetchError
     
     var description: String {
         switch self {
@@ -20,6 +20,8 @@ enum AppError: Error {
             "Bad response: \(response)"
         case .invalidData:
             "Invalid data"
+        case .coreDataFetchError:
+            "Error of fething data from core data"
         }
     }
 }

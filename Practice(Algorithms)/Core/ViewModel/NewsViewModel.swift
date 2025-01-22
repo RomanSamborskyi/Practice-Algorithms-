@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUICore
 
 
 class NewsViewModel: ObservableObject {
@@ -19,6 +20,29 @@ class NewsViewModel: ObservableObject {
     init(netWorking: Networking, coreData: CoreDataManager) {
         self.netWorking = netWorking
         self.coreData = coreData
+    }
+    
+    func deleteAllLocalData() {
+        do {
+            try coreData.deleteAllData()
+        } catch let error {
+            print("Error of deleting core data: \(error.localizedDescription)")
+        }
+    }
+    
+    func getNewsFromCoreData() {
+        do {
+           let coreDataNews = try coreData.fetcNews()
+            
+            for news in coreDataNews {
+                let newsModelItem = NewsModel(source: NewsSource(id: news.newsSource?.id, name: news.newsSource?.name), author: news.author, title: news.title, description: news.descript, url: news.url, urlToImage: news.urlToImage, publishedAt: news.publishedAt, content: news.content)
+                withAnimation(Animation.bouncy) {
+                    self.news.append(newsModelItem)
+                }
+            }
+        } catch let error {
+            print("Error of fetching news from core data: \(error)")
+        }
     }
     
     func getNews() {
@@ -38,7 +62,11 @@ class NewsViewModel: ObservableObject {
             let data = try await netWorking.fetchNews(type: NewsResponse.self, urlSession: session, request: request)
             await MainActor.run {
                 self.totalResults = data?.totalResults ?? 0
-                self.news.append(contentsOf: data?.articles ?? [])
+                if let dataArray = data?.articles {
+                    for news in dataArray {
+                        coreData.addToCoreData(news)
+                    }
+                }
             }
             currentPage += 1
         }

@@ -29,6 +29,18 @@ class CoreDataManager {
         }
     }
     
+    func deleteAllData() throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: newsEntityName)
+        let request = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try context.execute(request)
+        save()
+    }
+    
+    func fetcNews() throws -> [NewsEntity] {
+        let fetchRequest = NSFetchRequest<NewsEntity>(entityName: newsEntityName)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \NewsEntity.author, ascending: false)]
+        return try context.fetch(fetchRequest)
+    }
     func addToCoreData(_ news: NewsModel) {
         let newItem = NewsEntity(context: context)
         newItem.descript = news.description
@@ -43,9 +55,6 @@ class CoreDataManager {
         
         save()
     }
-    
-    
-    
     func save() {
         do {
             try context.save()
@@ -53,6 +62,5 @@ class CoreDataManager {
             print("Error of saving: \(error.localizedDescription)")
         }
     }
-    
 }
 
